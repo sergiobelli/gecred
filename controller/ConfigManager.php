@@ -27,7 +27,7 @@ class ConfigManager {
 		
 		//Parametri di accesso: localhost
 		$this->Host_locale     		= "localhost";
-		$this->Database_locale 		= "autenticazione";
+		$this->Database_locale 		= "gecred";
 		$this->User_locale     		= "root";
 		$this->Password_locale 		= "";
 		$this->table_prefix_locale 	= "mon";

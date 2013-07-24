@@ -3,13 +3,13 @@ require_once('lib/nusoap.php');
 
 $server = new nusoap_server; // Create server instance
 
-$server->configureWSDL('autenticazionews','http://localhost/services/autenticazione/server');
+$server->configureWSDL('gecredws','http://localhost/services/gecred/server');
 
 
 $server->register( 'login',
 	array("username"=>"xsd:string", "password"=>"xsd:string"), // inputs
 	array("result"=>"xsd:string"), // outputs
-	'http://localhost/services/autenticazione/server' // element namespace
+	'http://localhost/services/gecred/server' // element namespace
 );
 
 function login($username, $password) {
