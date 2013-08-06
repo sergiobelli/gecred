@@ -32,7 +32,7 @@ class ConfigManager {
 		$this->Database_locale 		= "gecred";
 		$this->User_locale     		= "root";
 		$this->Password_locale 		= "";
-		$this->table_prefix_locale 	= "mon";
+		$this->table_prefix_locale 		= "gc";
 		$this->elementNamespace_locale 	= "http://localhost/services/gecred/server";
 		
 		//Parametri di accesso: sergiobelli.net
@@ -40,7 +40,7 @@ class ConfigManager {
 		$this->Database 				= "sergiobe35619";
 		$this->User     				= "sergiobe35619";
 		$this->Password 				= "serg73625";
-		$this->table_prefix 			= "sd";
+		$this->table_prefix 			= "gc";
 		$this->elementNamespace		 	= "http://www.sergiobelli.net/services/gecred/server";
 	
 	}
