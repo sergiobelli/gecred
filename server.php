@@ -1,15 +1,19 @@
 <?php
 require_once('lib/nusoap.php');
+require_once("controller/ConfigManager.php");
+
+$ConfigManager = new ConfigManager();
+$elementNamespace = $ConfigManager->getElementNamespace();
 
 $server = new nusoap_server; // Create server instance
 
-$server->configureWSDL('gecredws','http://localhost/services/gecred/server');
+$server->configureWSDL('gecredws',$elementNamespace);
 
 
 $server->register( 'login',
 	array("username"=>"xsd:string", "password"=>"xsd:string"), // inputs
 	array("result"=>"xsd:string"), // outputs
-	'http://localhost/services/gecred/server' // element namespace
+	$elementNamespace // element namespace
 );
 
 function login($username, $password) {

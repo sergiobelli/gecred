@@ -11,14 +11,16 @@ class ConfigManager {
 		$Database_locale, 
 		$User_locale, 
 		$Password_locale, 
-		$table_prefix_locale;
+		$table_prefix_locale,
+		$elementNamespace_locale;
 		
 	public 
 		$Host, 
 		$Database, 
 		$User, 
 		$Password, 
-		$table_prefix;
+		$table_prefix,
+		$elementNamespace;
 	
 	public function __construct() {
 	
@@ -31,14 +33,15 @@ class ConfigManager {
 		$this->User_locale     		= "root";
 		$this->Password_locale 		= "";
 		$this->table_prefix_locale 	= "mon";
+		$this->elementNamespace_locale 	= "http://localhost/services/gecred/server";
 		
-		
-		//Parametri di accesso: atleticavalsesia.it
-		$this->Host     				= "sql.atleticavalsesia.it";
-		$this->Database 				= "atletica60358";
-		$this->User     				= "atletica60358";
-		$this->Password 				= "atle17370";
+		//Parametri di accesso: sergiobelli.net
+		$this->Host     				= "sql.sergiobelli.net";
+		$this->Database 				= "sergiobe35619";
+		$this->User     				= "sergiobe35619";
+		$this->Password 				= "serg73625";
 		$this->table_prefix 			= "sd";
+		$this->elementNamespace		 	= "http://www.sergiobelli.net/services/gecred/server";
 	
 	}
 		
@@ -88,5 +91,13 @@ class ConfigManager {
 	
 	function getAmbiente () {
 		return $this->ambiente;
+	}
+	
+	function getElementNamespace () {
+		if ($this->ambiente == "online") {
+		return $this->elementNamespace;
+		} else {
+			return $this->elementNamespace_locale;
+		}
 	}
 }

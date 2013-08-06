@@ -23,7 +23,7 @@ class LoginController {
 					username as username,
 					password as password,
 					descrizione as descrizione
-				FROM 	users 
+				FROM 	gc_users 
 				WHERE 	username = :username
 						AND password = :password";
 			
