@@ -20,7 +20,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="net/sergiobelli/gecred/business/service/orm/GCUserMapper.xml" />
+		<mapper resource="net/sergiobelli/gecred/business/service/orm/GCUsersMapper.xml" />
 	</mappers>
 	
 </configuration>

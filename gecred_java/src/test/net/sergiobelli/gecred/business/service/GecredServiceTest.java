@@ -22,6 +22,8 @@ public class GecredServiceTest {
 	@Test
 	public void testLoginOk() {
 		assertNotNull( service.login("sergio.belli","sergio") );
+		assertNotNull( service.login("giuliano.premoli","giuliano") );
+		assertNotNull( service.login("corrado.bonardi","corrado") );
 	}
 	
 	@Test

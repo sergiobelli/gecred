@@ -19,9 +19,20 @@ public class UsersOrm {
 	
 	public UsersOrm () throws IOException {
 		
-		String resource = "net/sergiobelli/gecred/business/service/orm/mybatis-config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		String configFile = "net/sergiobelli/gecred/business/service/orm/mybatis-config.xml";
+		InputStream configFileIS = Resources.getResourceAsStream(configFile);
+//		String configFileString = convertStreamToString(configFileIS); 
+		
+//		String mapperFile = "net/sergiobelli/gecred/business/service/orm/GCUsersMapper.xml";
+//		InputStream mapperFileIS = Resources.getResourceAsStream(mapperFile);
+//		String mapperFileString = convertStreamToString(mapperFileIS); 
+		
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(configFileIS);
+	}
+	
+	static String convertStreamToString(java.io.InputStream is) {
+	    java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+	    return s.hasNext() ? s.next() : "";
 	}
 	
 	public User login ( String username, String password ) {
@@ -35,12 +46,10 @@ public class UsersOrm {
 			params.put("username", username);
 			params.put("password", password);
 			
-			result = (User) session.selectList( "net.sergiobelli.gecred.business.service.orm.GCUserMapper.login", params ).get(0);
+			result = (User) session.selectList( "net.sergiobelli.gecred.business.service.orm.GCUsersMapper.login", params ).get(0);
 			
 		} catch ( Exception ex ) {
-			
-			ex.printStackTrace();
-			
+						
 		} finally {
 			
 			session.close();
