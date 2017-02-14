@@ -1,14 +1,12 @@
 package net.sergiobelli.gecred.client;
 
-import net.sergiobelli.gecred.business.service.GecredService;
-import net.sergiobelli.gecred.model.User;
+import javax.ws.rs.core.MediaType;
 
-import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
-import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
-//
-//import net.sergiobelli.gecred.business.service.GecredService;
-//import net.sergiobelli.gecred.model.User;
+import org.jboss.resteasy.client.jaxrs.engines.URLConnectionEngine;
+
+import net.sergiobelli.gecred.model.User;
+import net.sergiobelli.gecred.utils.GsonHandler;
 
 
 /**
@@ -26,14 +24,19 @@ public class GecredClient {
 	 */
 	public User login ( String username, String password ) {
 
-//		ResteasyClient client = new ResteasyClientBuilder().build();
-//		ResteasyWebTarget target = client.target("http://localhost:8080/RESTEasyApplication/user-management/users");
-//		Response response = target.request().get();
-//		String value = response.readEntity(String.class);
-//		System.out.println(value);
-//		response.close();  
+		String request = "https://792dyhrgm0.execute-api.us-west-2.amazonaws.com/prod/login?username={username}&password={password}";
+		request = request.replace("{username}", username);
+		request = request.replace("{password}", password);
+		
+		javax.ws.rs.core.Response result = 
+				new ResteasyClientBuilder().httpEngine(new URLConnectionEngine()).build()
+				.target(request)
+				.request(MediaType.APPLICATION_JSON)
+				.get();
+		
+		User user = GsonHandler.getGson().fromJson(result.readEntity(String.class), User.class);
+		
 
-
-		return new GecredService().login(username, password);
+		return user;
 	}
 }

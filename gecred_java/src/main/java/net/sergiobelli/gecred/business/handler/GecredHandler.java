@@ -1,6 +1,6 @@
 package net.sergiobelli.gecred.business.handler;
 
-import com.amazonaws.services.lambda.runtime.Context; 
+import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
 import net.sergiobelli.gecred.business.service.GecredService;
